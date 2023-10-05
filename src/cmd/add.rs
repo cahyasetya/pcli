@@ -1,7 +1,7 @@
 use clap::{Command, arg, ArgMatches};
 
 pub fn get_command()  -> clap::Command {
-  return Command::new("add")
+  Command::new("add")
     .about("Adds files to myapp")
     .arg(arg!([NUM1]))
     .arg(arg!([NUM2]))
