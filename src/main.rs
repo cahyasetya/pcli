@@ -1,7 +1,7 @@
 use clap::Command;
 
 pub mod cmd;
-use cmd::add;
+use cmd::{add, uuid};
 
 // #[derive(Parser, Debug)]
 // #[command(author, version, about, long_about = None)]
@@ -26,11 +26,17 @@ fn main() {
     .subcommand(
       add::get_command()
     )
+    .subcommand(
+      uuid::get_command()
+    )
     .get_matches();
 
   match matches.subcommand() {
       Some(("add", sub_matches)) => {
         add::call(sub_matches);
+      },
+      Some(("uuid", _)) => {
+        uuid::call();
       },
       _ => unreachable!("Exhausted list of subcommands and subcommand_required prevents `None`")
   }
